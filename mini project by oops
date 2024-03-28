@@ -1,0 +1,162 @@
+#include<bits/stdc++.h>
+using namespace std;
+/*
+Mini project-ATM;
+check balance 
+chash withraw
+user details
+update mobile no
+*/
+class atm       //class atm
+{
+   private:       // private member varibles
+   
+   long long int account_no;
+   string name;
+   int PIN;
+   double balance;
+   string mobile_no;
+   
+   public:       //member functions
+     
+    //setdata functions setting data into the private member varibles;
+void setData(long long int account_no_a,string name_a,int PIN_a,double balance_a,string mobile_no_a)
+    {
+        //assigninig the formal arguments to the private member variables;
+        account_no=account_no_a;
+        name=name_a;
+        PIN=PIN_a;
+        balance=balance_a;
+        mobile_no=mobile_no_a;
+        
+    }
+   //getAccountNo function returning user's account_no;
+    long long int getAccountNo()
+    {
+        return account_no;
+    }
+    //getName function returning user's name;
+    string getName()
+    {
+        return name;
+    }
+    //getPIN function returning user's PIN;
+    int getPIN()
+    {
+        return  PIN;
+    }
+    //getBalance function returning user's bank balance;
+    double getBalance()
+    {
+        return balance;
+    }
+  //getMobile function returning user's mobile number
+  string getMobileNo()
+     {
+         return mobile_no;
+     }
+     //setMobile number is updating user's mobile number
+    void setMobile(string mobile_prev,string mobile_new)
+    {
+        if(mobile_prev==mobile_no)// 
+                                 
+        {
+            mobile_no=mobile_new;
+            cout<<endl;
+            cout<<"SuccessFully updated mobile number ."<<endl;
+         
+        }
+        else
+        {
+           cout<<endl<<"incorrect! old mobile number ." ;
+         //  _getch();
+        }
+    }
+    //CASH withdraw function used to withdraw money from ATM
+    void cashWithDraw(int amount_a)
+    {
+        if(amount_a>0&&amount_a<balance)//check entered amount validity
+        {
+           balance-=amount_a; //balance=balnace-amount;
+           cout<<endl<<"please collect your cash"<<endl;
+           cout<<endl<<"Available balance is: "<<balance;
+        //   _getch();//getch is to hold the screen(until user press //any key)
+        }
+        else
+        {
+            cout<<endl<<"invalid input || insufficient balance";
+          //  _getch();//getch is to hold the screen(until user press //any key).
+            
+        }
+    }
+};
+int main()
+{
+    int  choice=0;
+    int enterPIN;
+    long  long  int enterAcc_No;//enterPIN and enterAccountNo;
+  //  System("cls");
+      atm user1;//(object)
+       user1.setData(1234567,"raj",1111,45000.90,"9487654321");
+      // cout<<user1.getPIN();
+       do{
+          cout<<endl<<"**welcome to atm**"<<endl;
+          cout<<endl<<"enter your account no: ";
+          cin>>enterAcc_No;//asking the user to enter acccoutNo;
+          cout<<endl<<" enetrPIN : ";//asking the user to enter //enterpIN;
+          cin>>enterPIN;
+          string oldMobileNo,newMobileNo;
+  if(enterAcc_No==user1.getAccountNo()&&enterPIN==user1.getPIN()){
+         do {
+             int amount=0;
+            // string OldMobileNo,newMobileNo;
+             system("cls");
+             cout<<endl<<"**welcome to atm **";
+             cout<<endl<<"Select Options";
+             cout<<endl<<" 1. check balance ";
+             cout<<endl<<" 2. chasWithdraw ";
+             cout<<endl<<" 3. show userDetails ";
+             cout<<endl<<" 4. update mobile no. ";
+             cout<<endl<<" 5.exit "<<endl;
+             cin>>choice;
+             switch(choice)
+             {
+                 case 1:cout<<"your bank balance is: "<<user1.getBalance();
+                // _getch();
+                   break;
+                   case 2:cout<<endl<<" Enter the amount ";
+                   cin>>amount;
+                   user1.cashWithDraw(amount);
+                     break;
+                     case 3:
+cout<<endl<<"user1 details are ";
+ cout<<endl<<"accountNo:"<<user1.getAccountNo();
+ cout<<endl<<"name: "<<user1.getName();
+  cout<<endl<<"Balance : "<<user1.getBalance();
+ cout<<endl<<"mobile No"<<user1.getMobileNo();
+                       
+     ///   _getch();
+         break;
+                       
+          case 4:
+          cout<<endl<<" enter old mobile no: ";
+          cin>>oldMobileNo;
+          cout<<endl<<"enter new mobile no: ";
+          cin>>newMobileNo;
+          user1.setMobile(oldMobileNo,newMobileNo);
+              break;
+             case 5:
+              exit(0);
+              default:
+              cout<<endl<<"enter a valid data";
+             }
+             
+          }while(true);
+          }
+          
+       }while(true);
+       
+       
+    
+    
+}
